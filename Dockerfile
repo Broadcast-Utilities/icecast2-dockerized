@@ -4,7 +4,7 @@ LABEL maintainer="Rik Visser <rik@broadcastutilities.nl>" \
 
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends icecast2 && \
+    apt-get install -y --no-install-recommends icecast2=2.4.4-4build4 && \
     sed -i "s#ENABLE=.*#ENABLE=true#" /etc/default/icecast2 && \
     cat /etc/default/icecast2 && \
     apt-get autoremove && \
@@ -15,7 +15,7 @@ RUN mkdir -p /var/log/icecast2 && \
     chown icecast:icecast /var/log/icecast2 && \
     chmod 755 /var/log/icecast2
 
-    
+
 ENTRYPOINT [ "entrypoint" ]
 
 
