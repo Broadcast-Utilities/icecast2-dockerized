@@ -11,6 +11,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /var/log/icecast2 && \
+    chown icecast:icecast /var/log/icecast2 && \
+    chmod 755 /var/log/icecast2
+
+    
 ENTRYPOINT [ "entrypoint" ]
 
 
