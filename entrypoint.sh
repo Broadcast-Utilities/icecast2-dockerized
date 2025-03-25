@@ -36,6 +36,5 @@ fi
 exec "$@"
 
 # Start Icecast and keep logs attached
-#!/bin/sh
 /etc/init.d/icecast2 start
 tail -f /var/log/icecast2/error.log

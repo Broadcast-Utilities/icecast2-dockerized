@@ -8,12 +8,9 @@ RUN apt-get update && \
     apt-get autoremove && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    groupadd -r icecast && \
-    useradd -r -g icecast -d /var/log/icecast2 -s /usr/sbin/nologin icecast2 && \
-    mkdir -p /var/log/icecast2 && \
-    mkdir -p /usr/local/bin && \
-    chown -R icecast2:icecast /var/log/icecast2
+    mkdir -p /var/log/icecast2 
 
+    
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY xml-edit.sh /usr/local/bin/xml-edit.sh
 
