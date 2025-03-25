@@ -10,9 +10,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/log/icecast2 
 
-    
+
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY xml-edit.sh /usr/local/bin/xml-edit.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/xml-edit.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD []

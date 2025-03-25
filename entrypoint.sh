@@ -37,4 +37,13 @@ exec "$@"
 
 # Start Icecast and keep logs attached
 /etc/init.d/icecast2 start
-tail -f /var/log/icecast2/error.log
+
+# Wacht totdat het logbestand bestaat en volg het
+LOG_FILE="/var/log/icecast2/error.log"
+
+echo "Waiting for log file $LOG_FILE..."
+while [ ! -f "$LOG_FILE" ]; do
+    sleep 0.5
+done
+
+tail -F "$LOG_FILE"
