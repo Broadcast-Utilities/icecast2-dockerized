@@ -80,4 +80,4 @@ Broadcast Utilities
 
 ## 🛡️ License
 
-MIT — see [LICENSE](LICENSE) for details.
+GPL v2.0 — see [LICENSE](LICENSE) for details.
