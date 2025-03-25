@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Dynamically update configuration from environment variables
 edit_icecast_config() {
   xml-edit "$@" /etc/icecast2/icecast.xml
 }
@@ -33,3 +34,8 @@ if [ -n "$ICECAST_MAX_SOURCES" ]; then
 fi
 
 exec "$@"
+
+# Start Icecast and keep logs attached
+#!/bin/sh
+/etc/init.d/icecast2 start
+tail -f /var/log/icecast2/error.log
