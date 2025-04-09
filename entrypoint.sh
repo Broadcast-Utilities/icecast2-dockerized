@@ -36,7 +36,8 @@ fi
 exec "$@"
 
 # Start Icecast and keep logs attached
-/etc/init.d/icecast2 start
+icecast -c /etc/icecast2/icecast.xml &
+ICECAST_PID=$!
 
 # Wacht totdat het logbestand bestaat en volg het
 LOG_FILE="/var/log/icecast2/error.log"
