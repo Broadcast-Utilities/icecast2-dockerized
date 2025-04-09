@@ -2,7 +2,7 @@
 
 # Dynamically update configuration from environment variables
 edit_icecast_config() {
-  xml-edit "$@" /etc/icecast2/icecast.xml
+  xml-edit "$@" /etc/icecast.xml
 }
 
 if [ -n "$ICECAST_SOURCE_PASSWORD" ]; then
@@ -34,17 +34,3 @@ if [ -n "$ICECAST_MAX_SOURCES" ]; then
 fi
 
 exec "$@"
-
-# Start Icecast and keep logs attached
-icecast -c /etc/icecast2/icecast.xml &
-ICECAST_PID=$!
-
-# Wacht totdat het logbestand bestaat en volg het
-LOG_FILE="/var/log/icecast2/error.log"
-
-echo "Waiting for log file $LOG_FILE..."
-while [ ! -f "$LOG_FILE" ]; do
-    sleep 0.5
-done
-
-tail -F "$LOG_FILE"

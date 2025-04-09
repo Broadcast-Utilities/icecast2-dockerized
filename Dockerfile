@@ -3,7 +3,7 @@ LABEL maintainer="Rik Visser <rik@broadcastutilities.nl>" \
       github="https://github.com/Broadcast-Utilities/icecast2-dockerized"
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends icecast2 && \
+    apt-get install -y icecast2 && \
     sed -i "s#ENABLE=.*#ENABLE=true#" /etc/default/icecast2 && \
     apt-get autoremove && \
     apt-get clean && \
@@ -17,6 +17,6 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/xml-edit.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD []
+CMD ["icecast2", "-c", "/etc/icecast.xml"]
 
 EXPOSE 8000
