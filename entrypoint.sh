@@ -1,6 +1,20 @@
 #!/bin/sh
+#!/bin/sh -eu
 
-source /usr/local/bin/xml-edit.sh
+xml-edit() {
+  local tag="$1"
+  local value="$2"
+  local file="$3"
+
+  # Check if the tag exists in the XML file
+  if ! grep -q "<${tag}>" "$file"; then
+    echo "Tag <${tag}> not found in $file" >&2
+    return 1
+  fi
+
+  # Update the value of the tag in the XML file
+  sed -i "s|<${tag}>.*</${tag}>|<${tag}>${value}</${tag}>|g" "$file"
+}
 
 # Dynamically update configuration from environment variables
 edit_icecast_config() {
