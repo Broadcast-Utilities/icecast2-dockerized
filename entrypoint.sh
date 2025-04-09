@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source /usr/local/bin/xml-edit.sh
+
 # Dynamically update configuration from environment variables
 edit_icecast_config() {
   xml-edit "$@" /etc/icecast.xml
