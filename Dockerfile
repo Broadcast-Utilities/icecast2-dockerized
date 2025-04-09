@@ -12,9 +12,8 @@ RUN apt-get update && \
 
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY xml-edit.sh /usr/local/bin/xml-edit.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/xml-edit.sh
+
 
 EXPOSE 8000
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
