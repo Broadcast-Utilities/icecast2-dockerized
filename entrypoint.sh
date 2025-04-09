@@ -1,6 +1,4 @@
 #!/bin/sh
-#!/bin/sh -eu
-
 xml-edit() {
   local tag="$1"
   local value="$2"
